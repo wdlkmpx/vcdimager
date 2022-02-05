@@ -19,11 +19,10 @@ dnl 02111-1307, USA.
 define(RELEASE_NUM, 1)
 define(LIBVCD_VERSION_STR, 2.0.$1)
 
-AC_PREREQ(2.61)
+AC_PREREQ([2.69])
 AC_REVISION([$Id$])dnl
 
-AC_INIT([GNU VCDimager],LIBVCD_VERSION_STR(RELEASE_NUM),
-	[bugs-vcdimager@gnu.org], [vcdimager])
+AC_INIT([GNU VCDimager],[LIBVCD_VERSION_STR(RELEASE_NUM)],[bugs-vcdimager@gnu.org],[vcdimager])
 AC_CONFIG_SRCDIR([lib/vcd.c])
 AM_INIT_AUTOMAKE(1.6.0)
 AC_CONFIG_MACRO_DIR([m4])
@@ -120,9 +119,7 @@ else
     SAVE_CFLAGS="$CFLAGS"
     CFLAGS="$CFLAGS $WOPT"
     AC_MSG_CHECKING([whether $CC accepts $WOPT])
-    AC_TRY_COMPILE([], [],
-      [has_option=yes; warning_flags="$warning_flags $WOPT"],
-      has_option=no)
+    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[]])],[has_option=yes; warning_flags="$warning_flags $WOPT"],[has_option=no])
     CFLAGS="$SAVE_CFLAGS"
     AC_MSG_RESULT($has_option)
   fi
@@ -131,7 +128,7 @@ else
     SAVE_CFLAGS="$CFLAGS"
     CFLAGS="$CFLAGS $WOPT"
     AC_MSG_CHECKING([whether $CC accepts $WOPT])
-    AC_TRY_COMPILE([], [], has_option=yes, has_option=no)
+    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[]])],[has_option=yes],[has_option=no])
     CFLAGS="$SAVE_CFLAGS"
     AC_MSG_RESULT($has_option)
     if test "x$has_option" = "xyes"; then
@@ -191,7 +188,7 @@ dnl headers
 
 dnl AC_DEFINE(_DEVELOPMENT_, [], enable warnings about being development release)
 # AC_DEFINE(_GNU_SOURCE, [], enable GNU libc extension)
-AC_STDC_HEADERS
+AC_HEADER_STDC
 AC_CHECK_HEADERS(sys/stat.h stdint.h inttypes.h stdbool.h sys/mman.h time.h)
 
 if test "x$ac_cv_header_stdint_h" != "xyes"
@@ -207,10 +204,11 @@ AC_C_CONST
 AC_C_INLINE
 
 empty_array_size="xxxx"
-AC_TRY_COMPILE([],[struct { int foo; int bar[]; } doo;], empty_array_size="")
+AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[struct { int foo; int bar[]; } doo;]])],[empty_array_size=""],[])
 
 if test "x$empty_array_size" = "xxxx"; then
- AC_TRY_COMPILE([],[struct { int foo; int bar[0]; } doo;], empty_array_size="0")
+ 
+ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[struct { int foo; int bar[0]; } doo;]])],[empty_array_size="0"],[])
 fi
 
 if test "x$empty_array_size" = "xxxx"; then
