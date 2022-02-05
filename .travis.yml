@@ -10,7 +10,7 @@ install:
   - wget $DOWNLOAD_LOC
   - tar -xpf libcdio-${LIBCDIO_VERSION}.tar.bz2
   - cd libcdio-${LIBCDIO_VERSION} && ./configure --prefix=/usr && make && sudo make install && cd .. && rm -fr libcdio-${LIBCDIO_VERSION}
-  - ./autogen.sh && make
+  - ./autogen.sh && ./configure && make
 
 script:
 - make check
