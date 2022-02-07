@@ -24,7 +24,7 @@ AC_REVISION([$Id$])dnl
 
 AC_INIT([GNU VCDimager],[LIBVCD_VERSION_STR(RELEASE_NUM)],[bugs-vcdimager@gnu.org],[vcdimager])
 AC_CONFIG_SRCDIR([lib/vcd.c])
-AM_INIT_AUTOMAKE(1.6.0)
+AM_INIT_AUTOMAKE(1.6.0 foreign)
 AC_CONFIG_MACRO_DIR([m4])
 
 # Enable silent build rules by default (Automake v1.11 or later).
@@ -145,6 +145,7 @@ fi
 AC_PROG_CPP
 AM_PROG_CC_STDC
 AM_PROG_NM
+AM_PROG_AR
 AC_PROG_AWK
 dnl AM_PROG_LIBTOOL tests whether we have GNU ld
 dnl this must come before checking --with-versioned-libs
