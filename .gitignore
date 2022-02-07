@@ -38,3 +38,5 @@ stamp-h1
 tmp
 vcdimager.spec
 ar-lib
+m4
+config.rpath

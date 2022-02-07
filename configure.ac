@@ -16,15 +16,15 @@ dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 dnl 02111-1307, USA.
 
-define(RELEASE_NUM, 1)
-define(LIBVCD_VERSION_STR, 2.0.$1)
+define(RELEASE_NUM, 2)
+define(LIBVCD_VERSION_STR, 2.0.2w)
 
 AC_PREREQ([2.69])
 AC_REVISION([$Id$])dnl
 
-AC_INIT([GNU VCDimager],[LIBVCD_VERSION_STR(RELEASE_NUM)],[bugs-vcdimager@gnu.org],[vcdimager])
+AC_INIT([vcdimager],[2.0.2w],[],[vcdimager])
 AC_CONFIG_SRCDIR([lib/vcd.c])
-AM_INIT_AUTOMAKE(1.6.0 foreign)
+AM_INIT_AUTOMAKE([1.6.0 foreign])
 AC_CONFIG_MACRO_DIR([m4])
 
 # Enable silent build rules by default (Automake v1.11 or later).
@@ -201,7 +201,6 @@ fi
 
 dnl compiler
 AC_C_BIGENDIAN
-AC_C_CONST
 AC_C_INLINE
 
 empty_array_size="xxxx"
