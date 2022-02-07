@@ -1,6 +1,6 @@
 info_TEXINFOS = vcdimager.texi vcd-info.texi vcdxrip.texi
 vcdimager_TEXINFOS = fdl.texi gpl.texi glossary.texi
-EXTRA_DIST = cvd-subtitles.pod svcd-ogt-subtitles.pod doxygen/Doxyfile.in doxygen/run_doxygen
+EXTRA_DIST = cvd-subtitles.pod svcd-ogt-subtitles.pod
 
 pdf: vcdimager.pdf vcd-info.pdf vcdxrip.pdf
 
@@ -34,7 +34,5 @@ html: vcdimager.html vcd-info.html vcdxrip.html svcd-ogt-subtitles.html \
 	makeinfo --no-headers $< > $@
 
 all-formats: pdf dvi txt ps html
-
-EXTRA_DIST = cvd-subtitles.pod svcd-ogt-subtitles.pod
 
 MOSTLYCLEANFILES = vcdimager.tgs vcdimager.ps.gz vcdimager.pdf vcdimager.html vcdimager_toc.html vcdimager_foot.html vcd-info.cps vcd-info.kys vcd-info.html vcd-info.fns vcd-info.ps.gz vcd-info.pdf vcdxrip.cps vcdxrip.kys vcdxrip.html vcdxrip.fns vcdxrip.ps.gz vcdxrip.pdf
